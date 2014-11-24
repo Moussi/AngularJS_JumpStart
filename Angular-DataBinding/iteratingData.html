@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>AngularJS JumpStart</title>
+</head>
+<body ng-init="people=[{name:'Moussi',city:'Tunis'},{name:'Aymen',city:'Paris'}]">
+
+<ul>
+    <li ng-repeat="person in people">
+        {{person.name}}
+    </li>
+</ul>
+
+<table border="2">
+    <tr>
+        <td>Name</td>
+        <td>City</td>
+    </tr>
+    <tr ng-repeat="person in people">
+        <td>{{person.name}}</td>
+        <td>{{person.city}}</td>
+    </tr>
+</table>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+</body>
+</html>
