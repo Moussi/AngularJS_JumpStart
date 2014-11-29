@@ -45,16 +45,16 @@ people=[
     <div class="CSSTableGenerator" >
         <table border = "1">
             <tr>
-                <th>Name</th>
-                <th>City</th>
-                <th>Joined</th>
-                <th>Custom Joined</th>
-                <th>Custom Joined2</th>
-                <th>OrderTotal</th>
+                <th ng-click="sortBy='name';reverse=!reverse">Name</th>
+                <th ng-click="sortBy='city';reverse=!reverse">City</th>
+                <th ng-click="sortBy='joined';reverse=!reverse">Joined</th>
+                <th ng-click="sortBy='joined';reverse=!reverse">Custom Joined</th>
+                <th ng-click="sortBy='joined';reverse=!reverse">Custom Joined2</th>
+                <th ng-click="sortBy='totalOrder';reverse=!reverse">OrderTotal</th>
 
             </tr>
 
-            <tr ng-repeat="person in people | orderBy:'name'| filter:namefilter">
+            <tr ng-repeat="person in people | orderBy:sortBy:revrerse | filter:namefilter">
                 <td>{{person.name | uppercase}}</td>
                 <td>{{person.city}}</td>
                 <td>{{person.joined | date:'yyyy-MM'}}</td>
