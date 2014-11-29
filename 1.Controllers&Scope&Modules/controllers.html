@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>AngularJS JumpStart</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/tabledesign.css">
+</head>
+<body ng-controller="CustomerController">
+
+   <h1>Name Filter : <input type="text" ng-model="namefilter.name" /></h1>
+   
+    <h2>Limit To</h2>
+    <div class="CSSTableGenerator" >
+        <table border = "1">
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Joined</th>
+                <th>Custom Joined</th>
+                <th>Custom Joined2</th>
+                <th>OrderTotal</th>
+
+            </tr>
+
+            <tr ng-repeat="person in people | limitTo:2">
+                <td>{{person.name | uppercase}}</td>
+                <td>{{person.city}}</td>
+                <td>{{person.joined | date:'yyyy-MM'}}</td>
+                <td>{{person.joined | date:'longDate'}}</td>
+                <td>{{person.joined | date:'medium'}}</td>
+                <td>{{person.orderTotal | currency : '$'}}</td>
+
+
+
+            </tr>
+        </table>
+    </div>
+    <h2>Order By Name</h2>
+    <div class="CSSTableGenerator" >
+        <table border = "1">
+            <tr>
+                <th ng-click="doSort('name')">Name</th>
+                <th ng-click="doSort('city')">City</th>
+                <th ng-click="doSort('joined')">Joined</th>
+                <th ng-click="doSort('joined')">Custom Joined</th>
+                <th ng-click="doSort('joined')">Custom Joined2</th>
+                <th ng-click="doSort('orderTotal')">OrderTotal</th>
+
+            </tr>
+
+            <tr ng-repeat="person in people | orderBy:sortBy:revrerse | filter:namefilter">
+                <td>{{person.name | uppercase}}</td>
+                <td>{{person.city}}</td>
+                <td>{{person.joined | date:'yyyy-MM'}}</td>
+                <td>{{person.joined | date:'longDate'}}</td>
+                <td>{{person.joined | date:'medium'}}</td>
+                <td>{{person.orderTotal | currency : '$'}}</td>
+
+
+
+            </tr>
+        </table>
+    </div>
+    <script src="../resources/js/angular.js"></script>
+    <script src="app/controllers/customerCtrl.js"></script>
+</body>
+</html>
