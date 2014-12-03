@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>AngularJS JumpStart</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/tabledesign.css">
+</head>
+<body ng-init="
+people=[
+{name:'Moussi',city:'Tunis',joined : '2000-12-02', orderTotal :9.9956},
+{name:'Aymen',city:'Paris',joined : '2014-12-02', orderTotal :19.9956},
+{name:'Achref',city:'Italy',joined : '2012-12-02', orderTotal :29.9956},
+{name:'Anis',city:'oman',joined : '2000-12-02', orderTotal :14.9956}
+]">
+
+   <h1>Name Filter : <input type="text" ng-model="namefilter.name" /></h1>
+   
+    <h2>Limit To</h2>
+    <div class="CSSTableGenerator" >
+        <table border = "1">
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Joined</th>
+                <th>Custom Joined</th>
+                <th>Custom Joined2</th>
+                <th>OrderTotal</th>
+
+            </tr>
+
+            <tr ng-repeat="person in people | limitTo:2">
+                <td>{{person.name | uppercase}}</td>
+                <td>{{person.city}}</td>
+                <td>{{person.joined | date:'yyyy-MM'}}</td>
+                <td>{{person.joined | date:'longDate'}}</td>
+                <td>{{person.joined | date:'medium'}}</td>
+                <td>{{person.orderTotal | currency : '$'}}</td>
+
+
+
+            </tr>
+        </table>
+    </div>
+    <h2>Order By Name</h2>
+    <div class="CSSTableGenerator" >
+        <table border = "1">
+            <tr>
+                <th ng-click="sortBy='name';reverse=!reverse">Name</th>
+                <th ng-click="sortBy='city';reverse=!reverse">City</th>
+                <th ng-click="sortBy='joined';reverse=!reverse">Joined</th>
+                <th ng-click="sortBy='joined';reverse=!reverse">Custom Joined</th>
+                <th ng-click="sortBy='joined';reverse=!reverse">Custom Joined2</th>
+                <th ng-click="sortBy='totalOrder';reverse=!reverse">OrderTotal</th>
+
+            </tr>
+
+            <tr ng-repeat="person in people | orderBy:sortBy:revrerse | filter:namefilter">
+                <td>{{person.name | uppercase}}</td>
+                <td>{{person.city}}</td>
+                <td>{{person.joined | date:'yyyy-MM'}}</td>
+                <td>{{person.joined | date:'longDate'}}</td>
+                <td>{{person.joined | date:'medium'}}</td>
+                <td>{{person.orderTotal | currency : '$'}}</td>
+
+
+
+            </tr>
+        </table>
+    </div>
+    <script src="../resources/js/angular.js"></script>
+</body>
+</html>
