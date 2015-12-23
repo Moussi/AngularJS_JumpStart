@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="gemStore">
+<head>
+	<title>Review</title>
+</head>
+<body>
+<div ng-controller="StoreController as store">
+<div ng-repeat="product in store.products | limitTo:1">
+<li>{{product.name}}</li>
+<li>{{product.price | currency}}</li>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
